@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.1.1
+
+- Synced optional transitive lockfile metadata required for Ubuntu GitHub Pages installs.
+
 ## 1.1.0
 
 - Added static prerender output for GitHub Pages publishing.
