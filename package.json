@@ -1,7 +1,7 @@
 {
   "name": "rag-deflection-bot",
-  "version": "1.0.0",
-  "description": "TypeScript control plane and knowledge artifacts for retrieval-grounded support deflection across billing, auth, integrations, and workflow operations.",
+  "version": "1.1.0",
+  "description": "Kinetic Gain support-deflection surface for retrieval-grounded answers, escalation boundaries, knowledge freshness, and revenue-safe self-service.",
   "main": "dist/src/app.js",
   "scripts": {
     "dev": "tsx watch src/app.ts",
@@ -9,19 +9,20 @@
     "test": "vitest run",
     "demo": "tsx scripts/run_demo.ts",
     "smoke": "tsx scripts/smoke_check.ts",
-    "verify": "npm run build && npm run test && npm run demo && npm run smoke",
+    "prerender": "tsx scripts/prerender.ts",
+    "verify": "npm run build && npm run test && npm run demo && npm run smoke && npm run prerender",
     "render:assets": "powershell -ExecutionPolicy Bypass -File .\\scripts\\render_readme_assets.ps1"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/mizcausevic-dev/rag-deflection-bot.git"
   },
-  "license": "ISC",
+  "license": "AGPL-3.0-or-later",
   "type": "commonjs",
   "bugs": {
     "url": "https://github.com/mizcausevic-dev/rag-deflection-bot/issues"
   },
-  "homepage": "https://github.com/mizcausevic-dev/rag-deflection-bot#readme",
+  "homepage": "http://deflect.kineticgain.com/",
   "dependencies": {
     "express": "^5.2.1"
   },

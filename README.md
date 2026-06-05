@@ -1,6 +1,9 @@
-# rag-deflection-bot
+# RAG Deflection Bot
 
 Retrieval-grounded support deflection control plane for billing, auth, integrations, and workflow questions. This repo treats support automation as an operator system with knowledge freshness, escalation boundaries, and case-by-case deflection posture.
+
+- Live: `http://deflect.kineticgain.com/`
+- Repo: `https://github.com/mizcausevic-dev/rag-deflection-bot`
 
 ## What it shows
 
@@ -60,6 +63,7 @@ Then open:
 
 ```powershell
 npm run verify
+npm run prerender
 npm run render:assets
 ```
 
