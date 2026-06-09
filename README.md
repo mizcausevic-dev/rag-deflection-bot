@@ -12,6 +12,28 @@ Retrieval-grounded support deflection control plane for billing, auth, integrati
 - concrete knowledge artifacts instead of vague bot claims
 - operator verification for grounded support automation
 
+## What this product does
+
+RAG Deflection Bot turns support automation into a governed revenue-control surface. It shows which customer questions can be answered automatically, which questions need bounded guidance, and which questions should escalate before a bot creates billing, identity, integration, or duplicate-action risk.
+
+For non-technical leaders, this is a support-margin and customer-trust product: reduce repetitive L1 load without letting automation improvise through sensitive account issues. For technical reviewers, it is an evidence model for retrieval quality, freshness posture, escalation boundaries, API payloads, and testable customer-support scenarios.
+
+## What these repos have in common
+
+This repo follows the Kinetic Gain pattern used across the current product estate:
+
+- turn a messy operating problem into a named control plane
+- expose the decision data as both UI and API-ready payloads
+- connect business value, technical proof, and executive narrative in the same surface
+- ship screenshots, docs, sample artifacts, and verification commands so the page is more than a static landing page
+
+## Operating workflow
+
+1. Model the knowledge lane with article health, freshness, deflection score, and escalation boundary.
+2. Run support prompts through the deflection lab and classify each one as deflected, partial, or escalated.
+3. Review the operator recommendation before launching or expanding automated support coverage.
+4. Use the docs and API routes as a reusable packet for RevOps, support, product, and technical review.
+
 ## Screenshots
 
 ### Overview

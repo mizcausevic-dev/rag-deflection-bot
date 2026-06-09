@@ -198,6 +198,56 @@ function pageShell(title: string, activeRoute: string, body: string) {
       padding: 6px 10px;
       font-size: 12px;
     }
+    .depth-grid {
+      grid-column: 1 / -1;
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 18px;
+    }
+    .depth-card {
+      border: 1px solid rgba(148, 163, 184, 0.16);
+      border-radius: 22px;
+      padding: 22px;
+      background:
+        linear-gradient(180deg, rgba(15, 23, 42, 0.92), rgba(2, 8, 23, 0.52)),
+        rgba(15, 23, 42, 0.72);
+      min-height: 210px;
+    }
+    .depth-card h3 {
+      margin: 0 0 12px;
+      font-size: 20px;
+      line-height: 1.25;
+    }
+    .depth-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.65;
+    }
+    .depth-card .kicker {
+      display: block;
+      margin-bottom: 14px;
+      color: var(--green);
+      font-size: 11px;
+    }
+    .site-footer {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      align-items: center;
+      margin-top: 36px;
+      padding-top: 22px;
+      border-top: 1px solid rgba(148, 163, 184, 0.16);
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .site-footer a {
+      color: #bfdbfe;
+      text-decoration: none;
+    }
+    .site-footer a:hover {
+      color: var(--green);
+    }
     .docs p, .docs li { color: var(--muted); line-height: 1.7; }
     code {
       font-family: var(--mono);
@@ -209,12 +259,14 @@ function pageShell(title: string, activeRoute: string, body: string) {
     @media (max-width: 1100px) {
       .hero { grid-template-columns: 1fr; }
       .metric-card, .two-up { grid-column: 1 / -1; }
+      .depth-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     }
     @media (max-width: 720px) {
       .wrap { width: min(100% - 24px, 1360px); }
       .hero, .card { padding: 22px; }
       .tabs { gap: 12px; }
       .tab { width: 100%; justify-content: center; }
+      .depth-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -237,9 +289,51 @@ function pageShell(title: string, activeRoute: string, body: string) {
         .join("")}
     </nav>
     ${body}
+    ${siteFooter()}
   </div>
 </body>
 </html>`;
+}
+
+function siteFooter() {
+  return `<footer class="site-footer">
+    <span>RAG Deflection Bot</span>
+    <a href="http://deflect.kineticgain.com/">deflect.kineticgain.com</a>
+    <a href="https://kineticgain.com/">Kinetic Gain</a>
+    <a href="https://portfolio.kineticgain.com/">Portfolio</a>
+    <a href="https://github.com/mizcausevic-dev/rag-deflection-bot">GitHub</a>
+    <a href="/docs">Docs</a>
+  </footer>`;
+}
+
+function productDepthSection() {
+  return `<article class="card" style="grid-column: 1 / -1;">
+    <div class="panel-title kicker">Product Depth</div>
+    <h2 style="margin:0 0 16px;font-family:var(--serif);font-size:42px;line-height:1.05;">RAG Deflection Bot turns support automation into a governed revenue-control surface.</h2>
+    <p class="copy">The product gives support, success, RevOps, and product teams a shared view of which customer questions can be answered automatically, which need a bounded next step, and which should never be left to a bot. It connects retrieval quality to churn risk, implementation drag, support margin, and customer-trust protection.</p>
+  </article>
+  <div class="depth-grid">
+    <div class="depth-card">
+      <span class="kicker">GTM analyst lens</span>
+      <h3>Deflection is positioned as margin protection, not chatbot novelty.</h3>
+      <p>Buyers can see the economic story: reduce repetitive L1 load while preserving fast escalation for billing, identity, integration, and duplicate-action risk.</p>
+    </div>
+    <div class="depth-card">
+      <span class="kicker">Value architect lens</span>
+      <h3>Every article has a freshness, score, and boundary.</h3>
+      <p>The surface makes value measurable by showing where knowledge is ready to deflect, where it is stale, and where automation could create account risk.</p>
+    </div>
+    <div class="depth-card">
+      <span class="kicker">Technical reviewer lens</span>
+      <h3>Retrieval behavior is testable before production rollout.</h3>
+      <p>Routes, API payloads, sample artifacts, and verification checks create a reusable evidence packet instead of relying on screenshots or unsupported claims.</p>
+    </div>
+    <div class="depth-card">
+      <span class="kicker">What these repos share</span>
+      <h3>One operator-readable pattern across the suite.</h3>
+      <p>The Kinetic Gain product family converts operational ambiguity into a page, payload, evidence model, and deployment surface leaders can understand quickly.</p>
+    </div>
+  </div>`;
 }
 
 function healthPill(health: string) {
@@ -284,6 +378,7 @@ export function renderOverview() {
         <strong>${dashboard.recommendation}</strong>
         <p>Best use case: high-volume support environments that want to reduce L1 load without letting a bot improvise through billing, identity, or duplication risk.</p>
       </article>
+      ${productDepthSection()}
       <article class="card two-up">
         <div class="panel-title kicker">Knowledge Snapshot</div>
         <div class="list">
@@ -328,6 +423,7 @@ export function renderKnowledgeLane() {
     `<section class="section-grid">
       <article class="card" style="grid-column: 1 / -1;">
         <div class="panel-title kicker">Knowledge Catalog</div>
+        <p class="copy">The knowledge lane is the operating inventory for what the assistant is allowed to know, where that knowledge lives, and when a human owner must refresh or override it.</p>
         <div class="list">
           ${articles.map((item) => `<div class="item">
             <div class="item-head">
@@ -376,6 +472,7 @@ export function renderDeflectionLab() {
     `<section class="section-grid">
       <article class="card" style="grid-column: 1 / -1;">
         <div class="panel-title kicker">Deflection Lab</div>
+        <p class="copy">The deflection lab converts common support prompts into board-readable outcomes: safe deflection, partial guidance, or immediate escalation.</p>
         <div class="list">
           ${cases.map((item) => `<div class="item">
             <div class="item-head">
@@ -405,6 +502,7 @@ export function renderVerification() {
     `<section class="section-grid">
       <article class="card" style="grid-column: 1 / -1;">
         <div class="panel-title kicker">Operator Verification</div>
+        <p class="copy">Verification keeps the bot tied to governed evidence instead of generic AI copy. Each check proves the repo exposes escalation boundaries, freshness posture, and customer-risk controls.</p>
         <div class="list">
           ${verification().map((line, index) => `<div class="item">
             <div class="item-head">
@@ -431,11 +529,15 @@ export function renderDocs() {
         <div class="list">
           <div class="item">
             <h4>Primary purpose</h4>
-            <p>Reduce L1 support load by routing low-risk requests through grounded knowledge answers while preserving fast escalation for billing, identity, and duplication-risk scenarios.</p>
+            <p>Reduce L1 support load by routing low-risk requests through grounded knowledge answers while preserving fast escalation for billing, identity, integration, and duplication-risk scenarios.</p>
           </div>
           <div class="item">
             <h4>Application shape mapping</h4>
             <p><code>src/app.ts</code> serves the operator shell. <code>src/data/sampleDeflection.ts</code> models knowledge and case posture. <code>src/services/ragDeflectionService.ts</code> exposes API-ready payloads. <code>src/services/render.ts</code> renders the control-plane routes.</p>
+          </div>
+          <div class="item">
+            <h4>Commercial interpretation</h4>
+            <p>For GTM leaders, this shows how self-service support can protect gross margin without silently shifting customer risk into unsupported automation. For technical reviewers, it shows the concrete guardrails needed before a RAG assistant touches real customer workflows.</p>
           </div>
         </div>
       </article>
